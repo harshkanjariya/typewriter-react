@@ -24,9 +24,6 @@ export interface TypewriterEvent {
   count?: number;
 }
 
-const emptyFn = () => {
-};
-
 const Typewriter = forwardRef(function Typewriter(
   props: TypewriterProps,
   ref: ForwardedRef<TypewriterHandlers>

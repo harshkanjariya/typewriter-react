@@ -2,6 +2,7 @@
   "name": "typewriter-react",
   "version": "0.1.0",
   "private": true,
+  "main": "bundle.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -19,12 +20,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rollup -c",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+  "files": [
+    "dist"
+  ],
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -45,6 +49,8 @@
     ]
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "@storybook/addon-essentials": "^7.0.18",
     "@storybook/addon-interactions": "^7.0.18",
     "@storybook/addon-links": "^7.0.18",
@@ -56,7 +62,12 @@
     "@types/lodash": "^4.14.195",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint-plugin-storybook": "^0.6.12",
+    "postcss": "^8.4.23",
     "prop-types": "^15.8.1",
+    "rollup": "^2.79.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.34.1",
     "storybook": "^7.0.18",
     "webpack": "^5.84.1"
   }
