@@ -26,6 +26,9 @@
     "build-storybook": "storybook build"
   },
   "files": [
+    "dist"
+  ],
+  "keywords": [
     "react",
     "typewriter",
     "animation",
@@ -37,8 +40,7 @@
     "library",
     "web"
   ],
-  "keywords": [
-  ],
+  "license": "MIT",
   "eslintConfig": {
     "extends": [
       "react-app",

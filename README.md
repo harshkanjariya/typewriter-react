@@ -1,46 +1,108 @@
-# Getting Started with Create React App
+# Typewriter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Typewriter component is a React component that provides typewriter animation effects for displaying text. It allows you to create dynamic typewriter-like animations by simulating the gradual appearance, deletion, and movement of text.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+Install the Typewriter component from npm:
 
-### `npm start`
+```shell
+npm install react-typewriter-component
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Usage
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Import the Typewriter component into your React application:
 
-### `npm test`
+```jsx
+import React from 'react';
+import Typewriter from 'react-typewriter-component';
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const App = () => {
+    return (
+        <div>
+            <Typewriter
+                useLock={true}
+                delay={500}
+                cursorColor="black"
+                cursorWidth={1}
+                style={{
+                    fontSize: 16,
+                }}
+            />
+        </div>
+    );
+}
 
-### `npm run build`
+export default App;
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Props
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The Typewriter component accepts the following props:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `useLock` (boolean, optional): Determines whether the component should be locked during the animation process. Defaults to `true`.
 
-### `npm run eject`
+- `delay` (number, optional): The delay (in milliseconds) between each animation frame (e.g., writing, deletion, movement). Defaults to `500`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `cursorColor` (string, optional): The color of the cursor. Defaults to `"black"`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `cursorWidth` (number, optional): The width (in pixels) of the cursor. Defaults to `1`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `style` (object, optional): Additional CSS styles to apply to the component. Can include properties like `fontSize`, `color`, etc.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Typewriter Component Handlers
 
-## Learn More
+The Typewriter component exposes the following handlers through the `ref` prop:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `write(text: string)`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Writes the specified text to the typewriter component.
+
+- `text` (string): The text to be written.
+
+### `deleteChars(count: number)`
+
+Deletes the specified number of characters from the typewriter component.
+
+- `count` (number): The number of characters to delete.
+
+### `move(count: number)`
+
+Moves the cursor in the typewriter component by the specified count.
+
+- `count` (number): The number of positions to move. Negative values move the cursor backward, and positive values move it forward.
+
+### `setDelay(delay: number)`
+
+Sets the delay (in milliseconds) between animation events in the typewriter component.
+
+- `delay` (number): The delay value to set.
+
+Example usage:
+
+```jsx
+import React, { useRef } from 'react';
+import Typewriter, { TypewriterHandlers } from 'react-typewriter-component';
+
+const MyComponent = () => {
+  const typewriterRef = useRef<TypewriterHandlers>(null);
+
+  const handleClick = () => {
+    typewriterRef.current?.setDelay(300);
+    typewriterRef.current?.write('Hello World!');
+    typewriterRef.current?.move(-3);
+    typewriterRef.current?.deleteChars(5);
+  };
+
+  return (
+    <div>
+      <Typewriter ref={typewriterRef} />
+      <button onClick={handleClick}>Animate</button>
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+

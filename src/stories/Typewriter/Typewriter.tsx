@@ -159,10 +159,7 @@ const Typewriter = forwardRef(function Typewriter(
     }
   }, [state, isLocked, delay, events]);
 
-  return <div style={{
-    fontSize: props.style?.size,
-    color: props.style?.color,
-  }} className={'typewriter'}>
+  return <div style={props.style} className={'typewriter'}>
     {state.preText}
     <span className={'cursor-parent'}>
       <span style={{
@@ -183,6 +180,6 @@ Typewriter.defaultProps = {
   style: {
     fontSize: 16,
   }
-}
+};
 
 export default Typewriter;
