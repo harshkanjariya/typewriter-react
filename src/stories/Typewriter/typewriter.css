@@ -1,0 +1,31 @@
+.typewriter .cursor-parent {
+    display: inline-block;
+    border-radius: 2px;
+    width: 0;
+    position: relative;
+}
+
+.typewriter .cursor-parent .cursor {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -90%);
+}
+
+.typewriter .cursor-parent .cursor.blink {
+    animation: .8s blink linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
