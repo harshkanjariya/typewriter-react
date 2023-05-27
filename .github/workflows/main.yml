@@ -27,7 +27,8 @@ jobs:
       - name: Setup package.json
         run: cp package.json dist/ && cd dist
 
+      - name: Set npm registry
+        run: npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_AUTH_TOKEN }}"
+
       - name: Publish to npm
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
