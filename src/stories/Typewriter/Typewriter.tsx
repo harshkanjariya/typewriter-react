@@ -118,7 +118,7 @@ const Typewriter = forwardRef(function Typewriter(
     if (!count) return;
     if (isNaN(count)) return;
 
-    setEvents([...events, {
+    setEvents((events) => [...events, {
       type: 'move',
       count,
     }]);
@@ -128,7 +128,7 @@ const Typewriter = forwardRef(function Typewriter(
     if (!text) return;
     if (isLocked) return;
 
-    setEvents([
+    setEvents((events) =>[
       ...events,
       {
         type: 'write',
@@ -141,7 +141,7 @@ const Typewriter = forwardRef(function Typewriter(
     if (!count) return;
     if (isNaN(count)) return;
 
-    setEvents([
+    setEvents((events) =>[
       ...events,
       {
         type: 'delete',
@@ -161,7 +161,7 @@ const Typewriter = forwardRef(function Typewriter(
         setDelay(delay);
       },
     }
-  }, [state, isLocked, delay, events]);
+  }, [isLocked, delay, events]);
 
   return <div style={props.style} className={'typewriter'}>
     {state.preText}

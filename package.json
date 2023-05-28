@@ -1,6 +1,6 @@
 {
   "name": "typing-animation-react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "bundle.js",
   "dependencies": {
     "lodash": "^4.17.21",
