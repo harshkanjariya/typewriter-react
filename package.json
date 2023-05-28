@@ -26,7 +26,8 @@
     "build-storybook": "storybook build"
   },
   "files": [
-    "dist"
+    "stories",
+    "index.d.ts"
   ],
   "keywords": [
     "react",
