@@ -25,10 +25,10 @@ jobs:
         run: npm run build
 
       - name: Setup package.json
-        run: cp package.json dist/ && cd dist
+        run: cp package.json dist/
 
       - name: Set npm registry
         run: npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_AUTH_TOKEN }}"
 
       - name: Publish to npm
-        run: npm publish
+        run: cd dist && npm publish
