@@ -41,39 +41,38 @@ export default App;
 
 The Typewriter component accepts the following props:
 
-- `useLock` (boolean, optional): Determines whether the component should be locked during the animation process. Defaults to `true`.
+| Prop          | Type     | Default Value | Description                                                                                  |
+| ------------- | -------- | ------------- | -------------------------------------------------------------------------------------------- |
+| `useLock`     | boolean  | `true`        | Determines whether the component should be locked during the animation process.             |
+| `delay`       | number   | `500`         | The delay (in milliseconds) between each animation frame.                                    |
+| `cursorColor` | string   | `"black"`     | The color of the cursor.                                                                     |
+| `cursorWidth` | number   | `1`           | The width (in pixels) of the cursor.                                                         |
+| `style`       | object   | -             | Additional CSS styles to apply to the component.                                             |
+| `onAnimationEnd` | function | -             | A callback function to be invoked when the animation ends.                                   |
 
-- `delay` (number, optional): The delay (in milliseconds) between each animation frame (e.g., writing, deletion, movement). Defaults to `500`.
-
-- `cursorColor` (string, optional): The color of the cursor. Defaults to `"black"`.
-
-- `cursorWidth` (number, optional): The width (in pixels) of the cursor. Defaults to `1`.
-
-- `style` (object, optional): Additional CSS styles to apply to the component. Can include properties like `fontSize`, `color`, etc.
-
-## Typewriter Component Handlers
+### Typewriter Component Handlers
 
 The Typewriter component exposes the following handlers through the `ref` prop:
 
-### `write(text: string)`
+#### `write(text: string)`
 
 Writes the specified text to the typewriter component.
 
 - `text` (string): The text to be written.
 
-### `deleteChars(count: number)`
+#### `deleteChars(count: number)`
 
 Deletes the specified number of characters from the typewriter component.
 
 - `count` (number): The number of characters to delete.
 
-### `move(count: number)`
+#### `move(count: number)`
 
 Moves the cursor in the typewriter component by the specified count.
 
 - `count` (number): The number of positions to move. Negative values move the cursor backward, and positive values move it forward.
 
-### `setDelay(delay: number)`
+#### `setDelay(delay: number)`
 
 Sets the delay (in milliseconds) between animation events in the typewriter component.
 
@@ -97,7 +96,7 @@ const MyComponent = () => {
 
   return (
     <div>
-      <Typewriter ref={typewriterRef} />
+      <Typewriter ref={typewriterRef} onAnimationEnd={() => console.log('Animation ended')} />
       <button onClick={handleClick}>Animate</button>
     </div>
   );

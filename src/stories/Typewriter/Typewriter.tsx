@@ -9,6 +9,7 @@ export interface TypewriterProps {
   cursorColor?: string,
   cursorWidth?: number,
   style?: any,
+  onAnimationEnd?: () => void,
 }
 
 export interface TypewriterHandlers {
@@ -101,6 +102,9 @@ const Typewriter = forwardRef(function Typewriter(
       if (props.useLock) setIsLocked(true);
     } else if (!events.length && !state.target.type) {
       setIsLocked(false);
+      if (props.onAnimationEnd) {
+        props.onAnimationEnd();
+      }
     }
   }, [events, state]);
 
@@ -166,7 +170,7 @@ const Typewriter = forwardRef(function Typewriter(
         width: props.cursorWidth,
         height: props.style?.fontSize,
         backgroundColor: props.cursorColor || props.style?.color,
-      }} className={'cursor'+ (state.target.type ? '' : ' blink')}/>
+      }} className={'cursor' + (state.target.type ? '' : ' blink')}/>
     </span>
     {state.postText}
   </div>;
